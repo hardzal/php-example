@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PHP Upload Basic</title>
+</head>
+<body>
+    <!--Action can blank if the script in the same files or included-->
+    <form method="post" action="upload.php" enctype="multipart/form-data">
+        <label for="upload">Upload here :</label>
+            <input type="file" name="file"/>
+        <label for="submit">Submit!</label>
+            <input type="submit" value="Upload" name="submit">
+    </form>
+</body>
+</html>
