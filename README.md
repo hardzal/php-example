@@ -1,2 +1,1 @@
-# php-example
-PHP Example Scripts
+# PHP REST API
