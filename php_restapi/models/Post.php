@@ -111,4 +111,58 @@ class Post {
 
         return false;
     }
+
+    public function update() {
+        $query = 'UPDATE '. $this->table .' 
+            SET
+                title = :title,
+                body = :body,
+                author = :author,
+                category_id = :category_id
+            WHERE 
+                id = :id';
+        
+        $statement = $this->connect->prepare($query);
+        
+        // clean data
+        $this->title = htmlspecialchars(strip_tags($this->title));
+        $this->body = htmlspecialchars(strip_tags($this->body));
+        $this->author = htmlspecialchars(strip_tags($this->author));
+        $this->category_id = htmlspecialchars(strip_tags($this->category_id));
+
+        // Binding data
+        $statement->bindParam(':id', $this->id);
+        $statement->bindParam(':title', $this->title);
+        $statement->bindParam(':body', $this->body);
+        $statement->bindParam(':author', $this->author);
+        $statement->bindParam(':category_id', $this->category_id);
+
+        // execute query
+        if($statement->execute()) {
+            return true;
+        }
+
+        // print error if something goes wrong
+        printf("Error: %s.\n", $statement->error);
+
+        return false;
+    }
+
+    public function delete() {
+        $query = 'DELETE FROM '. $this->table .' WHERE id = :id';
+
+        $statement = $this->connect->prepare($query);
+
+        $this->id = htmlspecialchars(strip_tags($this->id));
+
+        $statement->bindParam(':id', $this->id);
+
+        if($statement->execute()) {
+            return true;
+        }
+
+        printf("Error: %s.\n", $statement->error);
+
+        return false;
+    }
 }
