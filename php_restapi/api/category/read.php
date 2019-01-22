@@ -22,7 +22,7 @@ $num = $result->rowCount();
 if($num > 0) {
     // Post array
     $categories_array = array();
-    $categories_arr['data'] = array();
+    $categories_arr['categories'] = array();
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
@@ -33,7 +33,7 @@ if($num > 0) {
         );
 
         // Push to data
-        array_push($categories_arr['data'], $category_item);
+        array_push($categories_arr['categories'], $category_item);
     }
     // Turn to json
     echo json_encode($categories_arr);

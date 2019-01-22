@@ -22,7 +22,7 @@ $num = $result->rowCount();
 if($num > 0) {
     // Post array
     $posts_array = array();
-    $posts_arr['data'] = array();
+    $posts_arr['posts'] = array();
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
@@ -37,7 +37,7 @@ if($num > 0) {
         );
 
         // Push to data
-        array_push($posts_arr['data'], $post_item);
+        array_push($posts_arr['posts'], $post_item);
     }
     // Turn to json
     echo json_encode($posts_arr);
