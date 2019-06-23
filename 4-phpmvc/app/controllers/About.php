@@ -6,6 +6,6 @@ class About extends Controller {
         $data['title'] = "About page";
         $this->view('layouts/header', $data);
         $this->view('about/index', $data);
-        $this->view('layouts /footer');
+        $this->view('layouts/footer');
     }
 }
